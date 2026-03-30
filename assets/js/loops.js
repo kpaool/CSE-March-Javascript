@@ -4,8 +4,7 @@ let sumTo10 = 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10
 // console.log(sumTo10)
 
 
-let sum = 0
-
+let sum = 0 //  global variable
 for (let i = 1; i <= 10; i++) {
     sum = sum + i
 }
