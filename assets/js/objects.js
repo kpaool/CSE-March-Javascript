@@ -103,6 +103,17 @@ const sales = [
 ]
 
 
+let payment = {
+    id:12,
+    amount:50_000,
+    currency:"UGX"
+}
+
+// for(const key of Object.keys(payment)){
+//     console.log(key)
+// }
+
+
 
 
 

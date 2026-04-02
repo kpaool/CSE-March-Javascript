@@ -18,7 +18,6 @@ log(() => {
 
 
 function createCalculator(operation) {
-
     if (operation == "add") {
         return function (a, b) {
             return a + b
@@ -103,7 +102,7 @@ sales.push({
     tax: 0.18,
     isCredit: true
 })
-console.log(sales)
+// console.log(sales)
 
 const calcTotalCost = (quantity, costPrice, tax) => quantity * costPrice * (1 + tax)
 
@@ -112,8 +111,38 @@ let totalSales = sales.reduce((acc, sale) => {
     return acc + calcTotalCost(sale.quantity, sale.itemCost, sale.tax)
 }, 0)
 
-console.log(totalSales)
+// console.log(totalSales)
 
+
+
+
+
+
+
+let ages = [23, 12, 3, 45, 34, 12]
+
+let sumOfAges = ages.reduce((acc, age) => {
+    return acc + age
+}, 0)
+
+console.log(sumOfAges)
+
+
+let _totalSales = sales.reduce((acc, sale) => {
+    return acc + calcTotalCost(sale.quantity, sale.itemCost, sale.tax)
+}, 0)
+
+console.log(_totalSales)
+
+
+
+let heights = [156, 150, 187, 164, 156]
+
+let sumOfHeights  = heights.reduce((previousAccValue, elementValue) => {
+    return previousAccValue + elementValue
+ }, 0)
+
+ console.log(sumOfHeights/heights.length)
 
 
 
