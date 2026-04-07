@@ -104,9 +104,9 @@ const sales = [
 
 
 let payment = {
-    id:12,
-    amount:50_000,
-    currency:"UGX"
+    id: 12,
+    amount: 50_000,
+    currency: "UGX"
 }
 
 // for(const key of Object.keys(payment)){
@@ -117,3 +117,35 @@ let payment = {
 
 
 
+
+let sale = {
+    customerName: "",
+    itemName: "",
+    quantity: 0,
+    costPrice: 1000,
+    tax: 0.18,
+    isCredit: false
+}
+
+
+let sale_1 = {
+    customerName: "",
+    itemName: "",
+    quantity: 0,
+    costPrice: 1000,
+    tax: 0.18,
+    isCredit: false
+}
+
+let sale_2 = {
+    customerName: "",
+    itemName: "",
+    quantity: 0,
+    costPrice: 1000,
+    tax: 0.18,
+    isCredit:false
+}
+
+
+
+console.log(sale)
