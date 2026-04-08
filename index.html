@@ -37,14 +37,69 @@
                 <li>Bake for 30 minutes</li>
             </ol>
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <table border="1">
+                    <tr>
+                        <th>#</th>
+                        <th>Customer name</th>
+                        <th>Customer Age</th>
+                    </tr>
+                    <tbody id="body">
+                        <tr>
+                            <td>1</td>
+                            <td>Irene</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Faith</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Tendo</td>
+                            <td>25</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
     </div>
 
 
     <script>
 
-        // document.querySelector("button").addEventListener("click", () => {
-        //     alert("You have been clicked")
-        // })
+
+        let table = localStorage.getItem("table")
+        table = JSON.parse(table)
+        console.log(table)
+
+        let tableRows = ""
+        table.forEach((item, index) => {
+            let htmlstring = `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${item.name}</td>
+                <td>${item.age}</td>
+            </tr>
+            `
+            tableRows += htmlstring
+        })
+
+        let tableBody = document.querySelector("#body")
+
+        tableBody.innerHTML = tableRows
+
+        console.log(tableBody)
+
+
+
+
+
 
     </script>
 
