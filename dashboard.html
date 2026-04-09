@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,132 +12,170 @@
             --nyondo-blue: #2c3e50;
             --nyondo-accent: #18bc9c;
         }
+
         body {
             background-color: #f8f9fa;
         }
+
         .sidebar {
             min-height: 100vh;
             background-color: var(--nyondo-blue);
             color: white;
         }
+
         .nav-link {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 10px;
         }
-        .nav-link:hover, .nav-link.active {
+
+        .nav-link:hover,
+        .nav-link.active {
             color: white;
             background-color: var(--nyondo-accent);
             border-radius: 5px;
         }
+
         .stat-card {
             border: none;
             border-left: 5px solid var(--nyondo-accent);
             transition: transform 0.2s;
         }
+
         .stat-card:hover {
             transform: translateY(-5px);
         }
+
+
+        .light-mode {
+            background-color: white;
+            color: black;
+        }
+
+        .dark-mode {
+            background-color: black;
+            color: white !important;
+        }
     </style>
 </head>
-<body>
 
-<div class="container-fluid">
-    <div class="row">
-        <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse p-3">
-            <h4 class="text-center mb-4">NyondoStock</h4>
-            <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link active" href="#"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-box-seam me-2"></i> Inventory</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cart-check me-2"></i> Sales</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-truck me-2"></i> Transport</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-credit-card me-2"></i> Supplier Credit</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-wallet2 me-2"></i> Deposit Scheme</a></li>
-                <li class="nav-item"><hr class="text-white"></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person-gear me-2"></i> Admin Panel</a></li>
-            </ul>
-        </nav>
+<body class="light-mode">
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Management Dashboard</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <button id="downloadBtn" type="button" class="btn btn-sm btn-outline-secondary">Download Report</button>
-                </div>
-            </div>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse p-3">
+                <h4 class="text-center mb-4">NyondoStock</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link active" href="#"><i class="bi bi-speedometer2 me-2"></i>
+                            Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-box-seam me-2"></i> Inventory</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cart-check me-2"></i> Sales</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-truck me-2"></i> Transport</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-credit-card me-2"></i> Supplier
+                            Credit</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-wallet2 me-2"></i> Deposit
+                            Scheme</a></li>
+                    <li class="nav-item">
+                        <hr class="text-white">
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person-gear me-2"></i> Admin
+                            Panel</a></li>
+                    <li>
+                        <button class="btn btn-dark" id="darkmodeBtn">Dark mode</button>
+                    </li>
+                </ul>
+            </nav>
 
-            <div class="row g-4 mb-4">
-                <div class="col-12 col-sm-6 col-xl-3">
-                    <div class="card stat-card shadow-sm p-3">
-                        <div class="text-muted small fw-bold">TOTAL STOCK ITEMS</div>
-                        <div class="h3 fw-bold">1,240</div>
-                        <div class="text-success small"><i class="bi bi-arrow-up"></i> 12 New Registered</div>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Management Dashboard</h1>
+
+                    <div style="background-color: red;font-size: 10px; color: white; padding: 4px 6px 4px 6px; border-radius: 8px; "
+                        id="stockIndicator">Low stock</div>
+
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <button id="downloadBtn" type="button" class="btn btn-sm btn-outline-secondary">Download
+                            Report</button>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-xl-3">
-                    <div class="card stat-card shadow-sm p-3" style="border-left-color: #e74c3c;">
-                        <div class="text-muted small fw-bold">SUPPLIER CREDIT</div>
-                        <div class="h3 fw-bold">UGX 4.2M</div>
-                        <div class="text-danger small">5 Overdue Payments</div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-xl-3">
-                    <div class="card stat-card shadow-sm p-3" style="border-left-color: #3498db;">
-                        <div class="text-muted small fw-bold">TODAY'S SALES</div>
-                        <div class="h3 fw-bold">UGX 850k</div>
-                        <div class="text-primary small">14 Transactions</div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-xl-3">
-                    <div class="card stat-card shadow-sm p-3" style="border-left-color: #f1c40f;">
-                        <div class="text-muted small fw-bold">DEPOSIT SCHEME</div>
-                        <div class="h3 fw-bold">UGX 12.8M</div>
-                        <div class="text-warning small">45 Active Savers</div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card shadow-sm">
-                <div class="card-header bg-white py-3">
-                    <h5 class="mb-0">Recent Sales & Transactions</h5>
+                <div class="row g-4 mb-4">
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="card stat-card shadow-sm p-3">
+                            <div class="text-muted small fw-bold">TOTAL STOCK ITEMS</div>
+                            <div class="h3 fw-bold">1,240</div>
+                            <div class="text-success small"><i class="bi bi-arrow-up"></i> 12 New Registered</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="card stat-card shadow-sm p-3" style="border-left-color: #e74c3c;">
+                            <div class="text-muted small fw-bold">SUPPLIER CREDIT</div>
+                            <div class="h3 fw-bold">UGX 4.2M</div>
+                            <div class="text-danger small">5 Overdue Payments</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="card stat-card shadow-sm p-3" style="border-left-color: #3498db;">
+                            <div class="text-muted small fw-bold">TODAY'S SALES</div>
+                            <div class="h3 fw-bold">UGX 850k</div>
+                            <div class="text-primary small">14 Transactions</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="card stat-card shadow-sm p-3" style="border-left-color: #f1c40f;">
+                            <div class="text-muted small fw-bold">DEPOSIT SCHEME</div>
+                            <div class="h3 fw-bold">UGX 12.8M</div>
+                            <div class="text-warning small">45 Active Savers</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="table-responsive p-3">
-                    <table class="table table-hover align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Date</th>
-                                <th>Transaction ID</th>
-                                <th>Items</th>
-                                <th>Total Cost</th>
-                                <th>Transport</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2024-05-20</td>
-                                <td>#TXN-9982</td>
-                                <td>Cement (20 Bags)</td>
-                                <td>UGX 640,000</td>
-                                <td>UGX 25,000</td>
-                                <td><span class="badge bg-success">Paid</span></td>
-                            </tr>
-                            <tr>
-                                <td>2024-05-20</td>
-                                <td>#TXN-9981</td>
-                                <td>Iron Sheets (10)</td>
-                                <td>UGX 450,000</td>
-                                <td>UGX 0</td>
-                                <td><span class="badge bg-warning text-dark">Pending</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">Recent Sales & Transactions</h5>
+                    </div>
+                    <div class="table-responsive p-3">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Transaction ID</th>
+                                    <th>Items</th>
+                                    <th>Total Cost</th>
+                                    <th>Transport</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2024-05-20</td>
+                                    <td>#TXN-9982</td>
+                                    <td>Cement (20 Bags)</td>
+                                    <td>UGX 640,000</td>
+                                    <td>UGX 25,000</td>
+                                    <td><span class="badge bg-success">Paid</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2024-05-20</td>
+                                    <td>#TXN-9981</td>
+                                    <td>Iron Sheets (10)</td>
+                                    <td>UGX 450,000</td>
+                                    <td>UGX 0</td>
+                                    <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
-</div>
 
-<script src="assets/js/dashboard.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

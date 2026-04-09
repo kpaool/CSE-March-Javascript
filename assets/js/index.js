@@ -1,11 +1,64 @@
 
 let heading = document.getElementById("heading")
+let clickmeBtn = document.querySelector("#clickme")
 
-console.log(heading)
+let imageElem = document.querySelector("img")
 
-console.log(heading.innerText)
+let usernameInputField = document.querySelector("#username")
+let passwordInputField = document.querySelector("#password")
 
-heading.innerText = "Sorry, this is the correct text"
+// console.log(heading)
+
+console.dir(clickmeBtn)
+
+clickmeBtn.setAttribute("disabled", "true")
+
+// clickmeBtn.style.backgroundColor = "green"
+// clickmeBtn.style.borderColor = "yellow"
+
+const URALOGO = "https://ura.go.ug/storage/2022/10/URA-logo.png"
+
+setTimeout(() => {
+    clickmeBtn.removeAttribute("disabled")
+
+    imageElem.setAttribute("src", URALOGO)
+
+}, 5000)
+
+
+
+
+
+
+
+usernameInputField.value = "Maria"
+
+
+usernameInputField.addEventListener("blur", () => {
+    // how to read the value
+
+    let username = usernameInputField.value
+
+    usernameInputField.value = username.toUpperCase()
+
+    console.log(username)
+})
+
+passwordInputField.addEventListener("blur", () => {
+    let password = passwordInputField.value
+    console.log(password)
+
+
+})
+
+
+heading.textContent = "<script src='https://malicous.js'></script>Username"
+
+// console.log(heading.innerText)
+
+heading.innerHTML = "<script src='https://example.com/malicous.js'></script>Username"
+
+// heading.innerText = "Sorry, this is the correct text"
 
 
 let elements = document.getElementsByClassName("btn")
@@ -47,7 +100,7 @@ localStorage.setItem("app_name", "CSE MARCH 2026")
 
 
 const APP_NAME = localStorage.getItem("app_name")
-heading.innerText = APP_NAME
+// heading.innerText = APP_NAME
 
 
 localStorage.setItem("app_name", "Javascript Class")

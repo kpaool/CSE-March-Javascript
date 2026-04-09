@@ -13,6 +13,9 @@
 
     <div class="container p-16 py-16">
 
+        <img src="https://refactory.academy/wp-content/uploads/2025/07/Refactory-Logo.png" height="150px" width="auto"
+            alt="Refactory">
+
         <h1 id="heading" class="font-xl text-primary">
             Learning the DOM
         </h1>
@@ -26,7 +29,7 @@
 
         <div class="row">
             <div class="col-3">
-                <button class="btn btn-primary" onclick="//alert('You clicked the button')">Click me</button>
+                <button class="btn btn-primary" id="clickme">Click me</button>
                 <button class="btn btn-danger" onclick="//alert('You clicked the button')">Close</button>
             </div>
         </div>
@@ -68,6 +71,19 @@
             </div>
         </div>
 
+        <div class="row my-4">
+            <div class="col-12">
+                <form action="">
+
+                    <input type="text" placeholder="Username" id="username">
+                    <input type="password" placeholder="Password" id="password">
+
+                    <button type="submit">Submit</button>
+
+                </form>
+            </div>
+        </div>
+
     </div>
 
 
@@ -79,26 +95,43 @@
         console.log(table)
 
         let tableRows = ""
-        table.forEach((item, index) => {
-            let htmlstring = `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${item.name}</td>
-                <td>${item.age}</td>
-            </tr>
-            `
-            tableRows += htmlstring
-        })
-
         let tableBody = document.querySelector("#body")
 
-        tableBody.innerHTML = tableRows
+        table.forEach((item, index) => {
 
+            let tr = document.createElement("tr")
+            let td_number = document.createElement("td")
+            let td_name = document.createElement("td")
+            let td_age = document.createElement("td")
+
+            td_number.textContent = index+1
+            td_name.textContent = item.name
+            td_age.textContent=  item.age
+
+            tr.appendChild(td_number)
+            tr.appendChild(td_name)
+            tr.appendChild(td_age)
+
+            tableBody.appendChild(tr)
+
+        })
+
+        // console.log(tableRows)
         console.log(tableBody)
 
 
 
 
+
+
+
+        let newDiv = document.createElement("div")
+        // newDiv.textContent = "Hello, I am a new div"
+
+        // document.querySelector("#clickme").appendChild(newDiv)
+
+
+        
 
 
     </script>
