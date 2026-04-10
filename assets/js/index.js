@@ -6,8 +6,48 @@ let imageElem = document.querySelector("img")
 
 let usernameInputField = document.querySelector("#username")
 let passwordInputField = document.querySelector("#password")
+let ninInputField = document.querySelector("#nin")
+let formInputField = document.querySelector("form")
 
 // console.log(heading)
+
+// clickmeBtn.addEventListener("dblclick", (event) => {
+//     console.log(event)
+//     alert(`You double clicked the button with text ${event.target.textContent}`)
+// })
+
+clickmeBtn.addEventListener("mouseover", (event) => {
+    console.log(event)
+    // alert(`You hovered over the button with text ${event.target.textContent}`)
+
+    event.target.classList.add("scale")
+})
+
+clickmeBtn.addEventListener("mouseout", (event) => {
+    console.log(event)
+    // alert(`You hovered over the button with text ${event.target.textContent}`)
+
+    event.target.classList.remove("scale")
+})
+
+formInputField.addEventListener("submit", (event) => {
+    event.preventDefault()
+    console.log(event)
+})
+
+
+
+
+// clickmeBtn.addEventListener("click", (event) => {
+//     console.log(event)
+//     alert(`You clicked the button with text ${event.target.textContent}`)
+// })
+
+
+ninInputField.addEventListener("keyup", (event) => {
+    console.log(event)
+    event.target.value = event.target.value.toUpperCase()
+})
 
 console.dir(clickmeBtn)
 

@@ -1,13 +1,26 @@
+let user = localStorage.getItem("user")
+if (user === null) {
+    window.location.href = "login.html"
+}
+
+
+
 
 let elementSelector = "#downloadBtn"
 let downloadButton = document.querySelector(elementSelector)
 let darkmodeBtn = document.querySelector("#darkmodeBtn")
+let logoutBtn = document.querySelector("#logoutBtn")
 
 let body = document.querySelector("body")
 
 
 darkmodeBtn.addEventListener("click", () => {
     body.classList.toggle("dark-mode")
+})
+
+logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("user")
+    window.location.href = "login.html"
 })
 
 
